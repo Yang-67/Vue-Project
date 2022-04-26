@@ -133,7 +133,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 import { selectRole } from "../../api/data";
 import { selectRoleCount } from "../../api/data";
 export default {

@@ -13,19 +13,18 @@
       >
       </el-breadcrumb>
     </div>
+    <div class="user-avator">
+      <img src="../assets/v.png" />
+    </div>
     <el-dropdown style="width: 120px; cursor: pointer">
-      <el-avatar
-        style="margin-top: 10px"
-        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-      ></el-avatar>
       <span>{{ userName }}</span>
-      <i class="el-icon-arrow-down" style="margin-left: 5px"></i>
+      <i class="el-icon-arrow-down"></i>
       <el-dropdown-menu
         slot="dropdown"
         style="width: 100px; text-align: center"
       >
         <el-dropdown-item style="font-size: 14px; padding: 5px 0"
-          >个人信息</el-dropdown-item
+          ><span @click="userInfo">个人信息</span></el-dropdown-item
         >
         <el-dropdown-item style="font-size: 14px; padding: 5px 0"
           ><span @click="close">退出</span></el-dropdown-item
@@ -40,7 +39,9 @@ export default {
   name: "Header",
   computed: {
     userName() {
-      return localStorage.getItem("userName") ? JSON.parse(localStorage.getItem("userName")).username : null;
+      return localStorage.getItem("userName")
+        ? JSON.parse(localStorage.getItem("userName")).username
+        : null;
     },
   },
   props: {
@@ -52,9 +53,23 @@ export default {
       localStorage.removeItem("userName");
       this.$router.push("/");
     },
+    userInfo(){
+      
+    }
   },
 };
 </script>
 
 <style scoped>
+.user-avator {
+  margin-left: 20px;
+}
+
+.user-avator img {
+  margin-top: 10px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 </style>

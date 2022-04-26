@@ -61,3 +61,11 @@ export const selectRoleCount =()=>{
 		method:'get',
 	})
 }
+// 商品列表
+export const listAll =()=>{
+	return axios.request({
+		url:'http://localhost:8081/list',
+		method:'post',
+		
+	})
+}
