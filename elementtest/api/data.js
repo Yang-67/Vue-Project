@@ -66,6 +66,38 @@ export const listAll =()=>{
 	return axios.request({
 		url:'http://localhost:8081/list',
 		method:'post',
-		
+	})
+}
+
+// 文件列表
+export const fileList =(pageNum,pageSize,name)=>{
+	return axios.request({
+		url:'http://localhost:8081/file/page',
+		method:'get',
+		params:{pageNum:pageNum,pageSize:pageSize,name:name}
+	})
+}
+// 文件修改
+export const fileUpdate =(row)=>{
+	return axios.request({
+		url:'http://localhost:8081//file/update',
+		method:'post',
+		data:row
+	})
+}
+// 文件删除
+export const fileDelete =(id)=>{
+	return axios.request({
+		url:'http://localhost:8081/file',
+		method:'get',
+		params:{id:id}
+	})
+}
+// 批量删除文件
+export const fileDeleteAll =(ids)=>{
+	return axios.request({
+		url:'http://localhost:8081/file/del/batch',
+		method:'post',
+		data:ids
 	})
 }

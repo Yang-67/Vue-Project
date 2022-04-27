@@ -66,6 +66,10 @@
       <i class="el-icon-setting"></i>
       <span slot="title">数据统计</span>
     </el-menu-item>
+    <el-menu-item index="/files">
+      <i class="el-icon-setting"></i>
+      <span slot="title">文件管理</span>
+    </el-menu-item>
   </el-menu>
 </template>
 

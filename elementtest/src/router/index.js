@@ -11,7 +11,7 @@ import PowerList from '../components/powerList.vue'
 import ShopSort from '../components/shopSort.vue'
 import SortParam from '../components/sortParam.vue'
 import Visualization from '../components/visualization.vue'
-
+import Files from '../components/files.vue'
 Vue.use(VueRouter)
 
 const Router = new VueRouter({
@@ -39,6 +39,7 @@ const Router = new VueRouter({
         { path: '/shopSort', component: ShopSort },
         { path: '/sortParam', component: SortParam },
         { path: '/visualization', component: Visualization },
+        { path: '/files', component: Files },
       ]
     }
   ]
