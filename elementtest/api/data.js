@@ -101,3 +101,10 @@ export const fileDeleteAll =(ids)=>{
 		data:ids
 	})
 }
+// 图表
+export const Echarts =()=>{
+	return axios.request({
+		url:'http://localhost:8081/echarts/members',
+		method:'get',
+	})
+}

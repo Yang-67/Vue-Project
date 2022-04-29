@@ -6,7 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './assets/global.css'
 import axios from 'axios'
 // import Login from './components/login.vue'
-
+import * as echarts from 'echarts'
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
