@@ -59,6 +59,7 @@ export default {
         getLogin(this.ruleForm).then(({ data: res }) => {
           if (res.code == 200) {
             localStorage.setItem("userName", JSON.stringify(res.data));
+            localStorage.setItem("adminId", JSON.stringify(formName.adminId));
             this.$router.push("/Manage");
             this.$message({
               type: "success",

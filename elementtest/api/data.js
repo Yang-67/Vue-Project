@@ -108,3 +108,11 @@ export const Echarts =()=>{
 		method:'get',
 	})
 }
+// 根据账号查信息
+export const selectAdminInfo =(adminId)=>{
+	return axios.request({
+		url:'http://localhost:8081/selectAdminInfo',
+		method:'get',
+		params:{adminId:adminId}
+	})
+}

@@ -14,7 +14,7 @@
       </el-breadcrumb>
     </div>
     <div class="user-avator">
-      <img src="../assets/v.png" />
+      <img :src="urlMe" />
     </div>
     <el-dropdown style="width: 120px; cursor: pointer">
       <span>{{ userName }}</span>
@@ -40,13 +40,13 @@
         :rules="rules"
         ><el-upload
           class="avatar-uploader"
-          action="http://localhost: 8888/file/upload"
+          action="http://localhost:8081/file/upload"
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
         >
           <img
-            v-if="ruleForm.avatarUrl"
-            :src="ruleForm.avatarUrl"
+            v-if="ruleForm.adminUrl"
+            :src="ruleForm.adminUrl"
             class="avatar"
           />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -84,6 +84,8 @@
 </template>
 
 <script>
+import { selectAdminInfo } from "../../api/data";
+import { updAdmin } from "../../api/data";
 export default {
   name: "Header",
   data() {
@@ -114,6 +116,8 @@ export default {
     return {
       dialogVisible: false, //是否显示dialog
       addtitle: "",
+      urlMe: "",
+      // urlMe:"http://localhost:8081/file/6dd771681b83419f84d8976a8be4d580.png",
       ruleForm: {
         adminId: "",
         adminName: "",
@@ -122,7 +126,7 @@ export default {
         adminAddress: "",
         adminEmail: "",
         adminPhone: "",
-        avatarUrl: "",
+        adminUrl: "",
       },
       rules: {
         adminName: [
@@ -157,6 +161,11 @@ export default {
         : null;
     },
   },
+  mounted() {
+    this.urlMe = localStorage.getItem("userName")
+      ? JSON.parse(localStorage.getItem("userName")).adminUrl
+      : null;
+  },
   props: {
     collapseBtnClass: String,
     collapse: Function,
@@ -169,16 +178,34 @@ export default {
     userInfo() {
       this.dialogVisible = true;
       this.addtitle = "个人信息";
+      var id = JSON.parse(localStorage.getItem("adminId"));
+      selectAdminInfo(id).then(({ data: res }) => {
+        this.ruleForm = res.data;
+      });
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert("k");
+          updAdmin(this.ruleForm).then(({data:res }) => {
+            if (res.code == 200) {
+              this.$message({
+                type: "success",
+                message: "修改成功",
+              });
+              this.dialogVisible = false;
+              this.urlMe = this.ruleForm.adminUrl;
+            } else {
+              this.$message({
+                type: "error",
+                message: "修改失败",
+              });
+            }
+          });
         }
       });
     },
     handleAvatarSuccess(res) {
-      this.ruleForm.avatarUrl = res;
+      this.ruleForm.adminUrl = res;
     },
   },
 };
