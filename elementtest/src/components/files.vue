@@ -176,7 +176,6 @@ export default {
       this.load();
     },
     download(url) {
-        alert(url)
       window.open(url);
     },
   },

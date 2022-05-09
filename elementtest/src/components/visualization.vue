@@ -10,8 +10,8 @@
         </el-breadcrumb>
       </div>
       <el-divider></el-divider>
-      <div id="main" ref="chart" style="width: 500px; height: 400px"></div>
-      <div id="pie" style="width: 500px; height: 400px"></div>
+      <div id="main" ref="chart" style="width: 500px; height: 400px; float:left"></div>
+      <div id="pie" style="width: 500px; height: 400px; float:right"></div>
     </el-main>
   </div>
 </template>
