@@ -3,7 +3,7 @@
     <van-nav-bar title="登录" />
     <van-form @submit="onSubmit">
       <van-field
-        v-model="user.username"
+        v-model="user.userName"
         name="用户名"
         label="用户名"
         placeholder="用户名"
@@ -40,7 +40,7 @@ export default {
   data () {
     return {
       user: {
-        username: '', // 用户名
+        userName: '', // 用户名
         password: '' // 密码
       }
     }

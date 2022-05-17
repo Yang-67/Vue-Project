@@ -17,6 +17,9 @@ export function login (user) {
 export function testCors () {
   return request({
     url: '/testCors',
+    headers: {
+      isToken: false
+    },
     method: 'post'
   })
 }
